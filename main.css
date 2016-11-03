@@ -1,0 +1,40 @@
+* {
+  margin: 0; }
+
+html, body {
+  height: 100%; }
+
+.content {
+  align-items: center;
+  background-color: #761A0A;
+  border: 4rem solid #04150a;
+  border-left: none;
+  border-right: none;
+  box-sizing: border-box;
+  color: #f38572;
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  justify-content: space-around;
+  padding: 0 10%;
+  text-align: center; }
+  .content .b-quote .e-quote {
+    font-size: 3rem;
+    padding: 1em; }
+  .content .b-quote .e-source, .content .b-quote .e-title {
+    font-size: 1.5rem;
+    padding: 0.5em; }
+  .content .b-quote .e-source {
+    color: #bd2a10; }
+  .content .b-quote .e-title {
+    color: #2f0a04; }
+
+.button {
+  display: inline-block;
+  height: 2rem;
+  width: 15rem;
+  margin: 1em;
+  font-size: 2rem;
+  line-height: 2rem;
+  background-color: #471006;
+  border: black solid 1px; }

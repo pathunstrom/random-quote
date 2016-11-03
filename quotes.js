@@ -46,18 +46,42 @@ var quotes = [
     }
 ];
 
+var currentQuote = {};
+
+var tweetTemplate = "{quote} -- {character}, {game}";
+
 document.addEventListener("DOMContentLoaded", function() {
     updateQuote();
     document.getElementById("get-quote").addEventListener("click", updateQuote);
+    document.getElementById("tweet-this").addEventListener("click", tweet);
 });
 
 function newQuote() {
-    return quotes[Math.floor(Math.random() * quotes.length)];
+    currentQuote = quotes[Math.floor(Math.random() * quotes.length)];
 }
 
 function updateQuote() {
-    var quote = newQuote();
-    document.getElementById("quote-text").textContent = quote.text;
-    document.getElementById("quote-speaker").textContent = quote.speaker;
-    document.getElementById("quote-game").textContent = quote.game;
+    newQuote();
+    document.getElementById("quote-text").textContent = currentQuote.text;
+    document.getElementById("quote-speaker").textContent = currentQuote.speaker;
+    document.getElementById("quote-game").textContent = currentQuote.game;
+}
+
+function tweet() {
+    var text = renderQuote(currentQuote);
+    var newURL = buildTweetIntent(text, window.location);
+    window.open(newURL);
+}
+
+function buildTweetIntent(text, url) {
+    var root = "https://twitter.com/intent/tweet?";
+    var textParameter = "text=" + encodeURIComponent(text);
+    var urlParameter = "&url=" + encodeURIComponent(url);
+    return root + textParameter + urlParameter;
+}
+
+function renderQuote(quote) {
+    return tweetTemplate.replace("{quote}", quote.text)
+                        .replace("{character}", quote.speaker)
+                        .replace("{game}", quote.game);
 }

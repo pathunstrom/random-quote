@@ -28,6 +28,9 @@ html, body {
     color: #bd2a10; }
   .content .b-quote .e-title {
     color: #2f0a04; }
+  .content footer a {
+    font-size: 1rem;
+    color: #18803c; }
 
 .button {
   display: inline-block;
